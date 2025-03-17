@@ -86,6 +86,7 @@ public class Racer extends Account implements Serializable  {
                 "Pedals: " + pedals + "\n" +
                 "Fastest Lap Time: " + fastestLapTime + "\n" +
                 (recenetRace != null ? "Recent Race: " + recenetRace.getTrackName() + "\n" : "") +
-                (handbrake != null ? "Handbrake: " + handbrake + "\n" : "");
+                (handbrake != null ? "Handbrake: " + handbrake + "\n" : "")+
+                "Balance: " + getBalance() + "\n";
     }
 }

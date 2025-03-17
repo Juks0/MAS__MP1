@@ -4,6 +4,9 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Main{
+
+static Scanner scanner = new Scanner(System.in);
+public static void main(String[] args) {
 //    Racer racer1 = new Racer("Racer1", "Fanatec McLaren GT3", "Fanatec CSL Elite");
 //    Racer racer2 = new Racer("Racer2", "Logitech G29", "Logitech G29", "Logitech HB");
 //    Racer racer3 = new Racer("Racer3", "Moza CSS", "Moza CSL", "Moza HB v1.5");
@@ -15,8 +18,11 @@ public class Main{
 //    racer2.setFastestLapTime(46.5);
 //    racer3.setFastestLapTime(47.5);
 //    Race race = new Race("Tor Poznan", racers);
-static Scanner scanner = new Scanner(System.in);
-public static void main(String[] args) {
+//    racer1.addMoney(200);
+//    racer2.addMoney(300);
+//    racer3.addMoney(40000);
+//    racer1.removeMoney(100);
+
     try {
         ObjectPlus.loadExtent();
     } catch (Exception e) {
@@ -34,7 +40,8 @@ public static void main(String[] args) {
         System.out.println("6. Add Money to Racer");
         System.out.println("7. Remove Money from Racer");
         System.out.println("8. Set Racer's Best Lap Time");
-        System.out.println("9. Save & Exit");
+        System.out.println("9. Display All Racers");
+        System.out.println("10. Save & Exit");
         System.out.print("Select an option: ");
 
         int choice = scanner.nextInt();
@@ -49,7 +56,8 @@ public static void main(String[] args) {
             case 6 -> addMoneyToRacer();
             case 7 -> removeMoneyFromRacer();
             case 8 -> setRacerBestLapTime();
-            case 9 -> {
+            case 9 -> displayAllRacers();
+            case 10-> {
                 saveAndExit();
                 running = false;
             }
@@ -147,6 +155,16 @@ public static void main(String[] args) {
         } else {
             for (Race race : races) {
                 System.out.println(race);
+            }
+        }
+    }
+    private static void displayAllRacers(){
+        List<Racer> racers = ObjectPlus.getExtentFromClass(Racer.class);
+        if (racers.isEmpty()) {
+            System.out.println("No racers available.");
+        } else {
+            for (Racer racer : racers) {
+                System.out.println(racer);
             }
         }
     }
